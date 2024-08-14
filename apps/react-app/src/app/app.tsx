@@ -1,12 +1,7 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import styles from './app.module.css';
-
-import NxWelcome from './nx-welcome';
-
 export function App() {
   return (
     <div>
-      <NxWelcome title="react-app" />
+      <h1 className="text-3xl font-bold text-blue-500">React App</h1>
     </div>
   );
 }
