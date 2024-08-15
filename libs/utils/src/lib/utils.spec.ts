@@ -1,7 +1,7 @@
-import { utils } from './utils';
+import { cn } from './utils';
 
 describe('utils', () => {
-  it('should work', () => {
-    expect(utils()).toEqual('utils');
+  it('cn should work', () => {
+    expect(cn('a', 'b')).toEqual('a b');
   });
 });
