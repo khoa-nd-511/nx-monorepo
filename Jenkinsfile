@@ -51,6 +51,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                echo "BRANCH_NAME: ${env.BRANCH_NAME}"
+                echo "CHANGE_ID: ${env.CHANGE_ID}"
+                echo "CHANGE_TARGET: ${env.CHANGE_TARGET}"
+                echo "CHANGE_BRANCH: ${env.CHANGE_BRANCH}"
+                echo "CHANGE_AUTHOR_EMAIL: ${env.CHANGE_AUTHOR_EMAIL}"
+                echo "CHANGE_AUTHOR_DISPLAY_NAME: ${env.CHANGE_AUTHOR_DISPLAY_NAME}"
                 echo "Building.."
                 sh '''
                 echo "doing build stuff.."
@@ -61,7 +67,7 @@ pipeline {
             steps {
                 echo "Testing.."
                 sh '''
-                echo "doing test stuff..
+                echo "doing test stuff.."
                 '''
             }
         }
