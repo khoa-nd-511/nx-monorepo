@@ -2599,6 +2599,10 @@ packages:
     resolution: {integrity: sha512-x/5fWmGMnbKQAaNwN+UZlV79qBLM9JFnJuJ03gIi5whrob0xV0ofNVHy9DhwGdsMJQc2OKv0oGmLzvaqvAVv+g==}
     engines: {node: '>=6'}
 
+  cli-spinners@2.9.2:
+    resolution: {integrity: sha512-ywqV+5MmyL4E7ybXgKys4DugZbX0FC6LnwrhjuykIjnK9k8OQacQ7axGKnjDXWNhns0xot3bZI5h55H8yo9cJg==}
+    engines: {node: '>=6'}
+
   cliui@8.0.1:
     resolution: {integrity: sha512-BSeNnyus75C4//NQ9gQt1/csTXyo/8Sb+afLAkzAptFuMsod9HFokGNudZpi/oQV73hnVK+sR+5PVRMd+Dr7YQ==}
     engines: {node: '>=12'}
@@ -3106,8 +3110,8 @@ packages:
     engines: {node: '>=0.10.0'}
     hasBin: true
 
-  electron-to-chromium@1.5.7:
-    resolution: {integrity: sha512-6FTNWIWMxMy/ZY6799nBlPtF1DFDQ6VQJ7yyDP27SJNt5lwtQ5ufqVvHylb3fdQefvRcgA3fKcFMJi9OLwBRNw==}
+  electron-to-chromium@1.5.8:
+    resolution: {integrity: sha512-4Nx0gP2tPNBLTrFxBMHpkQbtn2hidPVr/+/FTtcCiBYTucqc70zRyVZiOLj17Ui3wTO7SQ1/N+hkHYzJjBzt6A==}
 
   emittery@0.13.1:
     resolution: {integrity: sha512-DeWwawk6r5yR9jFgnDKYt4sLS0LmHJJi3ZOnb5/JdbYwj3nW+FxQnHIjhBKz8YLC7oRNPVM9NQ47I3CVx34eqQ==}
@@ -8837,7 +8841,7 @@ snapshots:
       '@swc/counter': 0.1.3
       commander: 8.3.0
       fast-glob: 3.3.2
-      minimatch: 9.0.3
+      minimatch: 9.0.5
       piscina: 4.6.1
       semver: 7.6.3
       slash: 3.0.0
@@ -9799,7 +9803,7 @@ snapshots:
   browserslist@4.23.3:
     dependencies:
       caniuse-lite: 1.0.30001651
-      electron-to-chromium: 1.5.7
+      electron-to-chromium: 1.5.8
       node-releases: 2.0.18
       update-browserslist-db: 1.1.0(browserslist@4.23.3)
 
@@ -9923,6 +9927,8 @@ snapshots:
       restore-cursor: 3.1.0
 
   cli-spinners@2.6.1: {}
+
+  cli-spinners@2.9.2: {}
 
   cliui@8.0.1:
     dependencies:
@@ -10408,7 +10414,7 @@ snapshots:
     dependencies:
       jake: 10.9.2
 
-  electron-to-chromium@1.5.7: {}
+  electron-to-chromium@1.5.8: {}
 
   emittery@0.13.1: {}
 
@@ -12608,7 +12614,7 @@ snapshots:
       bl: 4.1.0
       chalk: 4.1.2
       cli-cursor: 3.1.0
-      cli-spinners: 2.6.1
+      cli-spinners: 2.9.2
       is-interactive: 1.0.0
       log-symbols: 4.1.0
       strip-ansi: 6.0.1
