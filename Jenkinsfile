@@ -58,6 +58,9 @@ pipeline {
                 sh '''
                 echo "doing build stuff.."
                 '''
+                env.getEnvironment().each { key, value ->
+                    echo "${key} = ${value}"
+                }
             }
         }
         stage('Test') {
