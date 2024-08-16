@@ -27,8 +27,8 @@ pipeline {
                         not { branch 'main' }
                     }
                     agent any
-                    nodejs('NodeJS-18') {
-                        steps {
+                    steps {
+                        nodejs('NodeJS-18') {
                             // This line enables distribution
                             // The "--stop-agents-after" is optional, but allows idle agents to shut down once the "e2e-ci" targets have been requested
                             // sh "npx nx-cloud start-ci-run --distribute-on='3 linux-medium-js' --stop-agents-after='e2e-ci'"
