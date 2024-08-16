@@ -43,11 +43,8 @@
 //     }
 // }
 pipeline {
-    agent { 
-        node {
-            label 'docker-agent'
-        }
-    }
+    agent any
+
     stages {
         stage('Build') {
             steps {
