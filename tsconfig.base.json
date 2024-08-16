@@ -15,8 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@nx/ui": ["libs/ui/src/index.ts"],
-      "@nx/utils": ["libs/utils/src/index.ts"]
+      "@nx/ui": ["./libs/ui/src/index.ts"],
+      "@nx/utils": ["./libs/utils/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
