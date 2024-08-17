@@ -34,7 +34,7 @@ pipeline {
                             // sh "npx nx-cloud start-ci-run --distribute-on='3 linux-medium-js' --stop-agents-after='e2e-ci'"
                             sh "pnpm install"
                             // sh "npx nx-cloud record -- nx format:check"
-                            sh "npx nx affected --base main -t lint test build"
+                            sh "npx nx affected --base origin/${env.CHANGE_TARGET} -t lint test build"
                         }
                     }
                 }
