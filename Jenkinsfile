@@ -10,34 +10,43 @@ pipeline {
                     when {
                         branch 'main'
                     }
-                    agent any
+                    agent 'docker-agent'
                     steps {
                         nodejs('NodeJS-18') {
-                            // This line enables distribution
-                            // The "--stop-agents-after" is optional, but allows idle agents to shut down once the "e2e-ci" targets have been requested
-                            // sh "npx nx-cloud start-ci-run --distribute-on='3 linux-medium-js' --stop-agents-after='e2e-ci'"
                             sh "pnpm install"
-                            // sh "npx nx-cloud record -- nx format:check"
+                            sh "npx nx affected --base=HEAD~1 -t lint test build"
+                        }
+                    }
+                }
+                stage('Dev') {
+                    when {
+                        branch 'dev'
+                    }
+                    agent 'docker-agent'
+                    steps {
+                        nodejs('NodeJS-18') {
+                            sh "pnpm install"
                             sh "npx nx affected --base=HEAD~1 -t lint test build"
                         }
                     }
                 }
                 stage('PR') {
                     when {
-                        not { branch 'main' }
+                        not {
+                            branch 'main'
+                            branch 'dev'
+                        }
                     }
-                    agent any
+                    agent 'docker-agent'
                     steps {
                         nodejs('NodeJS-18') {
-                            // Fetch all branches from the remote
-                            sh "git fetch origin ${env.CHANGE_TARGET}:${env.CHANGE_TARGET}"
-
-                            // This line enables distribution
-                            // The "--stop-agents-after" is optional, but allows idle agents to shut down once the "e2e-ci" targets have been requested
-                            // sh "npx nx-cloud start-ci-run --distribute-on='3 linux-medium-js' --stop-agents-after='e2e-ci'"
-                            sh "pnpm install"
-                            // sh "npx nx-cloud record -- nx format:check"
-                            sh "npx nx affected --base ${env.CHANGE_TARGET} -t lint test build"
+                            if (env.CHANGE_TARGET == 'main' || env.CHANGE_TARGET == 'dev') {
+                                sh "git fetch origin ${env.CHANGE_TARGET}:${env.CHANGE_TARGET}"
+                                sh "pnpm install"
+                                sh "npx nx affected --base ${env.CHANGE_TARGET} -t lint test build"
+                            } else {
+                                echo "Target branch is not 'main' or 'dev', skipping affected commands."
+                            }
                         }
                     }
                 }
