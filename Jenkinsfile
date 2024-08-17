@@ -10,7 +10,9 @@ pipeline {
                     when {
                         branch 'main'
                     }
-                    agent 'docker-agent'
+                    agent {
+                        label 'docker-agent'
+                    }
                     steps {
                         nodejs('NodeJS-18') {
                             sh "pnpm install"
@@ -22,7 +24,9 @@ pipeline {
                     when {
                         branch 'dev'
                     }
-                    agent 'docker-agent'
+                    agent {
+                        label 'docker-agent'
+                    }
                     steps {
                         nodejs('NodeJS-18') {
                             sh "pnpm install"
@@ -37,7 +41,9 @@ pipeline {
                             branch 'dev'
                         }
                     }
-                    agent 'docker-agent'
+                    agent {
+                        label 'docker-agent'
+                    }
                     steps {
                         nodejs('NodeJS-18') {
                             if (env.CHANGE_TARGET == 'main' || env.CHANGE_TARGET == 'dev') {
