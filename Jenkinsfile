@@ -36,10 +36,8 @@ pipeline {
                 }
                 stage('PR') {
                     when {
-                        not {
-                            branch 'main'
-                            branch 'dev'
-                        }
+                        not { branch 'main' }
+                        not { branch 'dev' }
                     }
                     agent {
                         label 'docker-agent'
