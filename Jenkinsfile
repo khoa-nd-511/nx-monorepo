@@ -43,14 +43,16 @@ pipeline {
                         label 'docker-agent'
                     }
                     steps {
-                        if (env.CHANGE_TARGET == 'main' || env.CHANGE_TARGET == 'dev') {
-                            nodejs('NodeJS-18') {
-                                sh "git fetch origin ${env.CHANGE_TARGET}:${env.CHANGE_TARGET}"
-                                sh "pnpm install"
-                                sh "npx nx affected --base ${env.CHANGE_TARGET} -t lint test build"
+                        script {
+                            if (env.CHANGE_TARGET == 'main' || env.CHANGE_TARGET == 'dev') {
+                                nodejs('NodeJS-18') {
+                                    sh "git fetch origin ${env.CHANGE_TARGET}:${env.CHANGE_TARGET}"
+                                    sh "pnpm install"
+                                    sh "npx nx affected --base ${env.CHANGE_TARGET} -t lint test build"
+                                }
+                            } else {
+                                echo "Target branch is not 'main' or 'dev', skipping affected commands."
                             }
-                        } else {
-                            echo "Target branch is not 'main' or 'dev', skipping affected commands."
                         }
                     }
                 }
